@@ -14,6 +14,8 @@ import {
   ImageBackground,
 } from 'react-native';
 import {images} from '../components/images';
+import WhiteBgButton from '../components/buttons/whitebg.button';
+import TransparentBgButton from '../components/buttons/transparent.button';
 
 const SplashScreen = ({navigation}) => {
   nav = navigation;
@@ -29,18 +31,17 @@ const SplashScreen = ({navigation}) => {
     }).start();
   };
 
-  const fadeOut = () => {
-    // Will change fadeAnim value to 0 in 3 seconds
-    Animated.timing(fadeAnim, {
-      toValue: 0,
-      duration: 3000,
-      useNativeDriver: true,
-    }).start();
-  };
-
   useEffect(() => {
     fadeIn();
   });
+
+  function handleSignUp() {
+    nav.navigate('UserSignUpScreen');
+  }
+
+  function handleSignIn() {
+    nav.navigate('UserSignInScreen');
+  }
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -55,11 +56,25 @@ const SplashScreen = ({navigation}) => {
             {
               opacity: fadeAnim,
             },
+            styles.mainBgContainer,
           ]}>
           <Image style={styles.mainLogo} source={images.mainLogo} />
+          <Text style={styles.welcomeHeading}> Welcome to Food App </Text>
+          <Text style={styles.welcomeMsg}>
+            Thanks for downloading our app.{' '}
+          </Text>
         </Animated.View>
-        {/* <Text style={styles.welcomeHeading}> Welcome to Food App </Text>
-        <Text style={styles.welcomeMsg}>Thanks for downloading our app. </Text> */}
+
+        <View style={styles.bottomButtonContainer}>
+          <WhiteBgButton
+            buttonLabel={'Sign Up'}
+            onPress={() => handleSignUp()}
+          />
+          <TransparentBgButton
+            buttonLabel={'Sign In'}
+            onPress={() => handleSignIn()}
+          />
+        </View>
       </ImageBackground>
     </SafeAreaView>
   );
@@ -93,6 +108,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     marginTop: 10,
+  },
+  bottomButtonContainer: {
+    display: 'flex',
+    position: 'absolute',
+    width: '90%',
+    bottom: 10,
   },
 });
 
