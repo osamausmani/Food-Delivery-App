@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SplashScreen from '../screens/splash.screen';
 import UserSignUpScreen from '../screens/user/user.signup.screen';
 import UserSignInScreen from '../screens/user/user.signin.screen';
+import LocationSetScreen from '../screens/location.set.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,6 +12,12 @@ const MainNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="LocationSetScreen"
+          component={LocationSetScreen}
+          options={{headerShown: false}}
+        />
+
         <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
