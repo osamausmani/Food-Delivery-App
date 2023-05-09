@@ -1,0 +1,4 @@
+export const storageConstants = {
+  LOCATION_ADDRESS: 'LOCATION_ADDRESS',
+  LOCATION_COORDS: 'LOCATION_COORDS',
+};

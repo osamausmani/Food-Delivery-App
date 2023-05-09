@@ -7,10 +7,12 @@ const MainTextInput = ({
   isRequired,
   isSecure,
   onChangeText,
+  value,
 }) => {
   return (
     <View style={styles.mainContainer}>
       <TextInput
+        value={value}
         secureTextEntry={isSecure}
         style={styles.textInputStyle}
         placeholderTextColor={'gray'}
