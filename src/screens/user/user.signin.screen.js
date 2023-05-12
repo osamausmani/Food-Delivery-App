@@ -29,7 +29,8 @@ const UserSignInScreen = ({navigation}) => {
     } else if (password.length < 8) {
       Alert.alert('You password is invalid.');
     } else {
-      Alert.alert('Sucess');
+      // Alert.alert('Sucess');
+      navigation.navigate('LocationSetScreen');
     }
   }
 

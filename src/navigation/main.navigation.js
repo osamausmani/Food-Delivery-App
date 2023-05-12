@@ -20,12 +20,6 @@ const MainNavigation = () => {
         />
 
         <Stack.Screen
-          name="LocationSetScreen"
-          component={LocationSetScreen}
-          options={{headerShown: false}}
-        />
-
-        <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
           options={{headerShown: false}}
@@ -40,6 +34,12 @@ const MainNavigation = () => {
         <Stack.Screen
           name="UserSignInScreen"
           component={UserSignInScreen}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="LocationSetScreen"
+          component={LocationSetScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
