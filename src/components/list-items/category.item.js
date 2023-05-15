@@ -3,15 +3,12 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {colors} from '../colors';
 
 const CategoryItem = ({item}) => (
-  console.log(item),
-  (
-    <TouchableOpacity activeOpacity={0.9} style={styles.mainContainer}>
-      <View style={styles.itemImageView}>
-        <Image style={styles.itemImage} source={item.catImage} />
-      </View>
-      <Text style={styles.itemName}>{item.name}</Text>
-    </TouchableOpacity>
-  )
+  <TouchableOpacity activeOpacity={0.9} style={styles.mainContainer}>
+    <View style={styles.itemImageView}>
+      <Image style={styles.itemImage} source={item.catImage} />
+    </View>
+    <Text style={styles.itemName}>{item.name}</Text>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({

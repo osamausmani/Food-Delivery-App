@@ -9,6 +9,7 @@ import {
   ImageBackground,
   StatusBar,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 
 import {LocalStoreDataFetch} from '../utils/storage.manager';
@@ -17,13 +18,17 @@ import {storageConstants} from '../constants/storage.constants';
 import {images} from '../components/images';
 import {colors} from '../components/colors';
 import CategoryItem from '../components/list-items/category.item';
+import FoodItem from '../components/list-items/food.item';
+import {fetchFoods} from '../viewModel/foodViewModel';
 
 const HomeFragment = ({navigation}) => {
   const [address, setAddress] = useState();
   const [latitude, setLatitude] = useState();
   const [longtitude, setLongitude] = useState();
 
-  async function fetchData() {
+  const [foodData, setFoodData] = useState();
+
+  async function fetchLocData() {
     setAddress(await LocalStoreDataFetch(storageConstants.LOCATION_ADDRESS));
     let coords = JSON.parse(
       await LocalStoreDataFetch(storageConstants.LOCATION_COORDS),
@@ -32,8 +37,15 @@ const HomeFragment = ({navigation}) => {
     setLongitude(coords.longitude);
   }
 
+  async function fetchFoodData() {
+    const data = await fetchFoods();
+    console.log(data.results);
+    setFoodData(data.results);
+  }
+
   useEffect(() => {
-    fetchData();
+    fetchLocData();
+    fetchFoodData();
   }, []);
 
   const categoryDataArr = [
@@ -107,6 +119,20 @@ const HomeFragment = ({navigation}) => {
           renderItem={({item}) => <CategoryItem item={item} />}
         />
       </View>
+
+      {/* Displaying Food Listing */}
+      <View>
+        <Text style={styles.sectionHeading}> Order Yummy Food </Text>
+
+        <FlatList
+          data={foodData}
+          contentContainerStyle={{
+            alignItems: 'center',
+          }}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => <FoodItem item={item} />}
+        />
+      </View>
     </ScrollView>
   );
 };
@@ -155,6 +181,12 @@ const styles = StyleSheet.create({
     fontSize: 36,
     textAlign: 'center',
     fontWeight: '900',
+  },
+  sectionHeading: {
+    color: 'white',
+    fontSize: 22,
+    margin: 20,
+    fontWeight: 'bold',
   },
 });
 

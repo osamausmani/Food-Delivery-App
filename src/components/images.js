@@ -16,4 +16,9 @@ export const images = {
   bottomNavBarProfileUnSelectedIcon: require('../assets/main-window-options/main-window-profile.png'),
 
   homeBgImage: require('../assets/evening.png'),
+
+  zingerBurgerImage: require('../assets/zinger-burger.jpeg'),
+  itemTimeIcon: require('../assets/delivery-time-icon.png'),
+  itemDistanceIcon: require('../assets/distance-icon.png'),
+  itemRatingIcon: require('../assets/rating-icon.png'),
 };

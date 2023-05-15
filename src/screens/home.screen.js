@@ -150,10 +150,13 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.containersBGDark,
   },
   viewsContainer: {
     width: '100%',
     height: '100%',
+    paddingBottom: 70,
+    backgroundColor: 'transparent',
   },
 
   bottomNavBarContainer: {
@@ -166,6 +169,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     justifyContent: 'space-evenly',
     alignItems: 'flex-end',
+    backgroundColor: 'transparent',
   },
   bottomNavItem: {
     alignItems: 'center',
